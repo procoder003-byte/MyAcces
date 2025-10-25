@@ -18,11 +18,15 @@
         body {
             font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             color: #1f2937; /* Dark text */
-            /* --- Custom Carbon Fiber Background --- */
-            background-color: #333333; /* Fallback dark color */
-            /* Using base64 for a light carbon fiber pattern */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%234d4d4d' fill-opacity='0.1'%3E%3Cpath d='M80 0H0v80h80V0zM10 20H0v10h10V20zM20 10v10h10V10H20zM40 0v10h10V0H40zM0 40h10v10H0V40zM30 30h10v10H30V30zM50 50v10h10V50zM70 70v10H60V70h10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            background-size: 80px 80px;
+            /* --- Sporty Carbon Fiber Background --- */
+            background-color: #1a1a1a; /* Dark background for sporty feel */
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.05) 0%, transparent 55%),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 55%),
+                linear-gradient(45deg, #0a0a0a 25%, transparent 25%, transparent 75%, #0a0a0a 75%, #0a0a0a),
+                linear-gradient(45deg, #0a0a0a 25%, transparent 25%, transparent 75%, #0a0a0a 75%, #0a0a0a);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
             /* ------------------------------------- */
         }
         /* Overriding tailwind classes where needed due to new body background */
@@ -86,6 +90,13 @@
             margin-top: 1rem;
             font-weight: bold;
             text-align: center;
+        }
+        /* Product card hover effect */
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
@@ -262,70 +273,6 @@
         </section>
 
         
-<section id="order-form" class="py-20 lg:py-28 bg-gray-50 border-t border-b border-red-200">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="content-card bg-white p-8 sm:p-10 border-4 border-green-600/50">
-                    <h2 class="section-header text-3xl sm:text-4xl font-extrabold text-gray-900 mb-8 text-center">
-                        تأكيد طلبك عبر واتساب (الدفع عند الاستلام)
-                    </h2>
-                    <p class="text-center text-gray-600 mb-8 font-bold text-lg">
-                        املأ البيانات واضغط "تأكيد الطلب" لتنتقل إلى محادثة واتساب معنا لإنهاء عملية الشحن.
-                    </p>
-
-                    <form id="whatsapp-form" class="space-y-6">
-                        
-<div>
-                            <label for="name" class="block text-lg font-medium text-gray-700 mb-2">الاسم الكامل</label>
-                            <input type="text" id="name" name="الاسم_الكامل" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-right" placeholder="الرجاء إدخال اسمك" />
-                        </div>
-
-                        
-<div>
-                            <label for="phone" class="block text-lg font-medium text-gray-700 mb-2">رقم الهاتف</label>
-                            <input type="tel" id="phone" name="رقم_الهاتف" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-right" placeholder="مثال: 0612345678" />
-                        </div>
-
-                        
-<div>
-                            <label for="city" class="block text-lg font-medium text-gray-700 mb-2">المدينة / منطقة التوصيل</label>
-                            <input type="text" id="city" name="المدينة" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-right" placeholder="مثال: الدار البيضاء - حي الألفة - شارع كذا - رقم المنزل كذا" />
-                            <p class="text-sm text-gray-500 mt-2 text-right">
-                                <span class="text-red-600 font-bold">ملاحظة هامة:</span> يرجى ذكر العنوان المفصل (الشارع، رقم المنزل/العمارة، الحي) لتسهيل عملية التوصيل السريع.
-                            </p>
-                        </div>
-
-                        
-<div>
-                            <label for="product" class="block text-lg font-medium text-gray-700 mb-2">اختر لون/موديل الغطاء</label>
-                            <select id="product" name="المنتج_المختار" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-right bg-white appearance-none">
-                                <option value="">-- اختر من القائمة --</option>
-                                <option value="أغطية رمادي وأسود (Modernes Universelles)">1. أغطية رمادي وأسود (Modernes Universelles)</option>
-                                <option value="أغطية أسود وأحمر (Sportives Classiques)">2. أغطية أسود وأحمر (Sportives Classiques)</option>
-                                <option value="أغطية أسود وبرونزي (Élégance Discrète)">3. أغطية أسود وبرونزي (Élégance Discrète)</option>
-                                <option value="أغطية بني ورمادي (Confort Écologique)">4. أغطية بني ورمادي (Confort Écologique)</option>
-                                <option value="أغطية بيج وأحمر (Suprêmes)">5. أغطية بيج وأحمر (Suprêmes)</option>
-                            </select>
-                            <p class="text-sm text-gray-500 mt-2 text-right">يمكنك مشاهدة ألوان المنتجات في قسم "تصاميم وألوان مميزة" أدناه.</p>
-                        </div>
-
-                        
-<button type="submit" id="submit-button" class="cta-button w-full px-10 py-4 text-xl font-black text-white bg-green-600 rounded-xl hover:bg-green-700 transition duration-300 flex items-center justify-center">
-                            
-<svg class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C7.03 2 3 6.03 3 11.04c0 1.95.63 3.76 1.7 5.23L3 21l5.25-1.48c1.43.77 3.04 1.22 4.04 1.22h.01c5.01 0 9.04-4.03 9.04-9.04S17.05 2 12.04 2zM17.5 15.3c-.28.17-.46.35-.9.15-.35-.15-.77-.28-1.22-.43-.45-.16-.76-.28-1.07-.31-.3-.03-.66-.01-.98.24-.32.25-.66.66-.82.85-.16.19-.32.21-.6.1-.28-.1-.99-.38-1.89-1.16-.7-.59-1.17-1.32-1.46-1.8-.3-.49-.03-.76.24-1.01.2-.18.44-.3.65-.5.21-.2.27-.19.4-.4.13-.2.07-.38-.02-.57-.09-.19-.82-1.99-1.12-2.73-.29-.72-.6-1.15-.55-1.15.04 0 .34.01.5.01.16 0 .46.04.66.44.2.4.67 1.62.7 1.69.03.07.05.14.01.28-.05.15-.3.47-.4.57-.1.1-.2.18-.32.28-.09.08-.19.19-.07.39.12.2.82 1.35 1.77 2.2.94.85 1.87 1.13 2.15 1.26.28.13.43.12.59.1.16-.02.48-.19.72-.37.24-.19.46-.35.7-.42.23-.07.49.02.66.12.18.1.35.2.5.31.15.11.23.21.32.25.09.04.53.25.66.14.13-.11.26-.39.4-.73.13-.34.09-.64.09-.73s-.04-.15-.09-.25c-.06-.1-.13-.15-.2-.17s-.17-.07-.26-.14c-.09-.07-.2-.2-.25-.32-.05-.12-.01-.22.04-.32.06-.1.25-.38.4-.57.15-.2.27-.2.37-.2.1 0 .22.03.32.03.11 0 .25-.01.37-.16s-.2-.36-.3-.54c-.1-.18-.2-.3-.3-.44-.1-.13-.09-.25-.06-.37.03-.12.23-.32.4-.49.17-.18.39-.42.56-.58.17-.16.35-.34.48-.46.12-.11.26-.2.4-.1.13.09.84.97.94 1.17.1.2.16.3.16.42s-.04.2-.1.35c-.06.15-.24.38-.49.62-.25.24-.48.45-.64.57s-.2.24-.1.42z"/></svg>
-                            تأكيد الطلب عبر واتساب (1150 درهم)
-                        </button>
-
-                    </form>
-
-                    <p id="whatsapp-message" class="message-box bg-green-100 text-green-800 hidden mt-6">
-                        تم إنشاء رسالة واتساب بنجاح. يرجى الضغط على زر "الإرسال" في النافذة الجديدة.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-
-        
 <section id="gallery" class="py-20 lg:py-28">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center content-card">
                 <h2 class="section-header text-3xl sm:text-4xl font-extrabold text-gray-900 mb-16">
@@ -371,6 +318,68 @@
             </div>
         </section>
 
+        
+<section id="order-form" class="py-20 lg:py-28 bg-gray-50 border-t border-b border-red-200">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="content-card bg-white p-8 sm:p-10 border-4 border-green-600/50">
+                    <h2 class="section-header text-3xl sm:text-4xl font-extrabold text-gray-900 mb-8 text-center">
+                        تأكيد طلبك عبر واتساب (الدفع عند الاستلام)
+                    </h2>
+                    <p class="text-center text-gray-600 mb-8 font-bold text-lg">
+                        املأ البيانات واضغط "تأكيد الطلب" لتنتقل إلى محادثة واتساب معنا لإنهاء عملية الشحن.
+                    </p>
+
+                    <form id="whatsapp-form" class="space-y-6">
+                        
+<div>
+                            <label for="name" class="block text-lg font-medium text-gray-700 mb-2">الاسم الكامل</label>
+                            <input type="text" id="name" name="الاسم_الكامل" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-right" placeholder="الرجاء إدخال اسمك" />
+                        </div>
+
+                        
+<div>
+                            <label for="phone" class="block text-lg font-medium text-gray-700 mb-2">رقم الهاتف</label>
+                            <input type="tel" id="phone" name="رقم_الهاتف" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-right" placeholder="مثال: 0612345678" />
+                        </div>
+
+                        
+<div>
+                            <label for="city" class="block text-lg font-medium text-gray-700 mb-2">المدينة / منطقة التوصيل</label>
+                            <input type="text" id="city" name="المدينة" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-right" placeholder="مثال: الدار البيضاء - حي الألفة - شارع كذا - رقم المنزل كذا" />
+                            <p class="text-sm text-gray-500 mt-2 text-right">
+                                <span class="text-red-600 font-bold">ملاحظة هامة:</span> يرجى ذكر العنوان المفصل (الشارع، رقم المنزل/العمارة، الحي) لتسهيل عملية التوصيل السريع.
+                            </p>
+                        </div>
+
+                        
+<div>
+                            <label for="product" class="block text-lg font-medium text-gray-700 mb-2">اختر لون/موديل الغطاء</label>
+                            <select id="product" name="المنتج_المختار" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-red-500 focus:border-red-500 text-right bg-white appearance-none">
+                                <option value="">-- اختر من القائمة --</option>
+                                <option value="أغطية رمادي وأسود (Modernes Universelles)">1. أغطية رمادي وأسود (Modernes Universelles)</option>
+                                <option value="أغطية أسود وأحمر (Sportives Classiques)">2. أغطية أسود وأحمر (Sportives Classiques)</option>
+                                <option value="أغطية أسود وبرونزي (Élégance Discrète)">3. أغطية أسود وبرونزي (Élégance Discrète)</option>
+                                <option value="أغطية بني ورمادي (Confort Écologique)">4. أغطية بني ورمادي (Confort Écologique)</option>
+                                <option value="أغطية بيج وأحمر (Suprêmes)">5. أغطية بيج وأحمر (Suprêmes)</option>
+                            </select>
+                            <p class="text-sm text-gray-500 mt-2 text-right">يمكنك مشاهدة ألوان المنتجات في قسم "تصاميم وألوان مميزة" أعلاه.</p>
+                        </div>
+
+                        
+<button type="submit" id="submit-button" class="cta-button w-full px-10 py-4 text-xl font-black text-white bg-green-600 rounded-xl hover:bg-green-700 transition duration-300 flex items-center justify-center">
+                            
+<svg class="w-6 h-6 ml-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C7.03 2 3 6.03 3 11.04c0 1.95.63 3.76 1.7 5.23L3 21l5.25-1.48c1.43.77 3.04 1.22 4.04 1.22h.01c5.01 0 9.04-4.03 9.04-9.04S17.05 2 12.04 2zM17.5 15.3c-.28.17-.46.35-.9.15-.35-.15-.77-.28-1.22-.43-.45-.16-.76-.28-1.07-.31-.3-.03-.66-.01-.98.24-.32.25-.66.66-.82.85-.16.19-.32.21-.6.1-.28-.1-.99-.38-1.89-1.16-.7-.59-1.17-1.32-1.46-1.8-.3-.49-.03-.76.24-1.01.2-.18.44-.3.65-.5.21-.2.27-.19.4-.4.13-.2.07-.38-.02-.57-.09-.19-.82-1.99-1.12-2.73-.29-.72-.6-1.15-.55-1.15.04 0 .34.01.5.01.16 0 .46.04.66.44.2.4.67 1.62.7 1.69.03.07.05.14.01.28-.05.15-.3.47-.4.57-.1.1-.2.18-.32.28-.09.08-.19.19-.07.39.12.2.82 1.35 1.77 2.2.94.85 1.87 1.13 2.15 1.26.28.13.43.12.59.1.16-.02.48-.19.72-.37.24-.19.46-.35.7-.42.23-.07.49.02.66.12.18.1.35.2.5.31.15.11.23.21.32.25.09.04.53.25.66.14.13-.11.26-.39.4-.73.13-.34.09-.64.09-.73s-.04-.15-.09-.25c-.06-.1-.13-.15-.2-.17s-.17-.07-.26-.14c-.09-.07-.2-.2-.25-.32-.05-.12-.01-.22.04-.32.06-.1.25-.38.4-.57.15-.2.27-.2.37-.2.1 0 .22.03.32.03.11 0 .25-.01.37-.16s-.2-.36-.3-.54c-.1-.18-.2-.3-.3-.44-.1-.13-.09-.25-.06-.37.03-.12.23-.32.4-.49.17-.18.39-.42.56-.58.17-.16.35-.34.48-.46.12-.11.26-.2.4-.1.13.09.84.97.94 1.17.1.2.16.3.16.42s-.04.2-.1.35c-.06.15-.24.38-.49.62-.25.24-.48.45-.64.57s-.2.24-.1.42z"/></svg>
+                            تأكيد الطلب عبر واتساب (1150 درهم)
+                        </button>
+
+                    </form>
+
+                    <p id="whatsapp-message" class="message-box bg-green-100 text-green-800 hidden mt-6">
+                        تم إنشاء رسالة واتساب بنجاح. يرجى الضغط على زر "الإرسال" في النافذة الجديدة.
+                    </p>
+                </div>
+            </div>
+        </section>
 
         
 <section id="contact-info" class="py-16 bg-red-700">
